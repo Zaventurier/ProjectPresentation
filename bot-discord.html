@@ -86,6 +86,16 @@
       background-color: #00ccb6;
     }
 
+    pre {
+      background: #222;
+      color: #0ff;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -102,14 +112,82 @@
 
   <main>
     <section>
+      <h2>🎯 Contexte & Objectifs</h2>
+      <p>
+        Ce projet est né d'un défi personnel. Voulant apprendre la manipulation du JavaScript, la manipulation d'API et l'utilisation de bibliothèques extebe comme axios ou wiston pour les logs. 
+        L'objectif principal était d'automatiser ces tâches pour améliorer l'expérience utilisateur, stimuler la participation et faciliter le travail des modérateurs.
+      </p>
+      <p>
+        Le bot propose une interaction intuitive via des commandes slash, des événements dynamiques et un système de récompenses pour motiver les membres.
+      </p>
+    </section>
+
+    <section>
       <h2>🧠 Fonctionnalités principales</h2>
       <ul>
-        <li>💬 Commandes slash personnalisées</li>
-        <li>📅 Défis mensuels avec rôle à la clé</li>
-        <li>🧩 Énigmes à résoudre via des commandes dédiées</li>
-        <li>🎁 Système d’événements aléatoires (bonus/malus)</li>
-        <li>🎲 Système de probabilité</li>
-        <li>🛠️ Interface de modération avec commandes staff</li>
+        <li>
+          💬 <strong>Commandes slash personnalisées :</strong> 
+          Utilisation des commandes modernes Discord.js v14 pour une interface utilisateur claire et accessible, permettant d’interagir avec le bot rapidement sans erreurs.
+        </li>
+        <li>
+          📅 <strong>Défis mensuels avec rôle à la clé :</strong> 
+          Chaque mois, de nouveaux défis sont proposés. Les membres qui les complètent reçoivent un rôle spécial, augmentant leur visibilité et motivation.
+        </li>
+        <li>
+          🧩 <strong>Énigmes à résoudre :</strong> 
+          Le bot propose des énigmes personnalisées via des commandes dédiées, encourageant l’esprit d’équipe et la participation ludique.
+        </li>
+        <li>
+          🎁 <strong>Système d’événements aléatoires :</strong> 
+          Des bonus ou malus sont appliqués de manière aléatoire, rendant chaque interaction unique et stimulant l’engagement.
+        </li>
+        <li>
+          🎲 <strong>Système de probabilité :</strong> 
+          Certaines actions du bot reposent sur des probabilités calculées (ex : chance d’obtenir un évènement aléatoire), introduisant un aspect jeu dans le serveur.
+        </li>
+        <li>
+          🛠️ <strong>Interface de modération :</strong> 
+          Des commandes réservées au staff permettent de gérer les membres efficacement (bannissements, avertissements, gestion des rôles).
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🏗️ Architecture & Organisation technique</h2>
+      <p>
+        Le bot est construit en Node.js avec Discord.js v14, utilisant une architecture modulaire : 
+        chaque fonctionnalité est développée dans un module distinct, facilitant la maintenance et l’évolution.
+      </p>
+      <p>
+        La configuration et les données dynamiques sont stockées dans des fichiers JSON, simplifiant le déploiement et l’édition sans base de données.
+      </p>
+      <p>
+        Le système de commandes utilise les slash commands natives de Discord pour une meilleure expérience utilisateur, avec validation des paramètres et gestion d’erreurs centralisée.
+      </p>
+    </section>
+
+    <section>
+      <h2>⚠️ Difficultés rencontrées & Solutions</h2>
+      <ul>
+        <li>
+          Gestion des permissions complexes : mise en place d’un système fin de contrôle d’accès pour que seules certaines commandes soient accessibles au staff.
+        </li>
+        <li>
+          Synchronisation des rôles selon l’avancement des défis : utilisation d’événements Discord.js pour garantir une mise à jour en temps réel.
+        </li>
+        <li>
+          Implémentation du système aléatoire de bonus/malus : création d’un algorithme probabiliste fiable et testé.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🚀 Améliorations & évolutions futures</h2>
+      <ul>
+        <li>Ajout d’une base de données (MongoDB ou autre) pour gérer les statistiques et l’historique des membres.</li>
+        <li>Développement d’une interface web d’administration pour faciliter la gestion des défis et événements.</li>
+        <li>Intégration d’un système de notifications personnalisées pour informer les membres des nouveautés.</li>
+        <li>Support multilingue pour toucher une communauté plus large.</li>
       </ul>
     </section>
 
@@ -130,14 +208,32 @@
         alt="Aperçu de la commande de base /aide"
         class="screenshot"
       />
-      <p class="caption">Affichage de la commande /aide montrant les options disponibles.</p>
+      <p class="caption">
+        Affichage de la commande /aide montrant toutes les commandes disponibles, classées par catégories, avec description et options.
+      </p>
 
       <img
         src="images/discord-app-preview2.png"
         alt="Aperçu de la commande de base /ping"
         class="screenshot"
       />
-      <p class="caption">Réponse rapide de la commande /ping pour vérifier la latence du bot.</p>
+      <p class="caption">
+        Réponse rapide de la commande /ping pour vérifier la latence du bot et s’assurer qu’il est en ligne et réactif.
+      </p>
+
+      <pre>
+<code>
+// Exemple simplifié d'une commande slash /ping en Discord.js v14
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === 'ping') {
+    const sent = await interaction.reply({ content: 'Pong!', fetchReply: true });
+    interaction.editReply(\`Pong! Latence : \${sent.createdTimestamp - interaction.createdTimestamp} ms\`);
+  }
+});
+</code>
+      </pre>
     </section>
 
     <section>
