@@ -58,9 +58,17 @@
     .screenshot {
       display: block;
       max-width: 100%;
-      margin: 1rem auto;
+      margin: 1rem auto 0.4rem auto;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 255, 224, 0.2);
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+      font-style: italic;
     }
 
     a.button {
@@ -116,16 +124,20 @@
 
     <section>
       <h2>📸 Aperçu</h2>
+
       <img
         src="images/discord-app-preview1.png"
         alt="Aperçu de la commande de base /aide"
         class="screenshot"
       />
-        <img
+      <p class="caption">Affichage de la commande /aide montrant les options disponibles.</p>
+
+      <img
         src="images/discord-app-preview2.png"
         alt="Aperçu de la commande de base /ping"
         class="screenshot"
       />
+      <p class="caption">Réponse rapide de la commande /ping pour vérifier la latence du bot.</p>
     </section>
 
     <section>
