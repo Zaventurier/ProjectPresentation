@@ -81,6 +81,17 @@
       color: #666;
       font-size: 0.9rem;
     }
+
+    a.disabled {
+  background-color: #444;
+  color: #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+    a.disabled:hover {
+      background-color: #444;
+    }
   </style>
 </head>
 <body>
@@ -100,13 +111,13 @@
     <div class="card">
       <h2>Extension Wordpress</h2>
       <p>Une extension WordPress qui à pour objectif la gestion de carrousel sur le site.</p>
-      <a href="extension-wordpress.html">Voir le projet</a>
+      <a class="disabled" href="extension-wordpress.html">Voir le projet</a>
     </div>
 
     <div class="card">
       <h2>Application Métier</h2>
       <p>Une application métier afin de gérer et de traduire des données en JSON ou XML pour les modifier et générer de nouveaux fichiers.</p>
-      <a href="application-metier.html">Voir le projet</a>
+      <a class="disabled" href="application-metier.html">Voir le projet</a>
     </div>
   </main>
 
